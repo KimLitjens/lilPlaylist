@@ -9,45 +9,45 @@ class songOverview extends React.Component {
       songs: [
         {
           id: 1,
-          song: "mooie",
-          artist: "henk",
-          genre: "jazz",
+          song: "Bohemian Rhapsody",
+          artist: "queen",
+          genre: "Rock",
           rating: "4"
         },
         {
           id: 2,
           song: "hometown",
           artist: "snelle",
-          genre: "jazz",
-          rating: "4"
+          genre: "Pop",
+          rating: "3"
         },
         {
           id: 3,
-          song: "rood",
-          artist: "marco borsato",
-          genre: "jazz",
+          song: "Sultans Of Swing",
+          artist: "Dire Straits",
+          genre: "Pop",
           rating: "4"
         },
         {
           id: 4,
-          song: "winter",
-          artist: "u2",
+          song: "Smells Like Teen Spirit",
+          artist: "Nirvana",
           genre: "jazz",
-          rating: "4"
+          rating: "5"
         },
         {
           id: 5,
-          song: "alles zusammen",
-          artist: "sido",
-          genre: "jazz",
+          song: "Hurra die Welt geht unter ft. Henning May",
+          artist: "K.I.Z.",
+          genre: "Pop",
           rating: "4"
         },
         {
           id: 6,
-          song: "this song",
-          artist: "seed",
-          genre: "jazz",
-          rating: "4"
+          song: "Roxanne",
+          artist: "AnnenMayKantereit x Milky Chance",
+          genre: "Pop",
+          rating: "5"
         }
       ]
     };
@@ -74,6 +74,18 @@ class songOverview extends React.Component {
         currentState.sort((a, b) => a.artist.localeCompare(b.artist))
       );
     };
+    const sortByGenre = () => {
+      const currentState = this.state.songs;
+      this.setState(
+        currentState.sort((a, b) => a.genre.localeCompare(b.genre))
+      );
+    };
+    const sortByRating = () => {
+      const currentState = this.state.songs;
+      this.setState(
+        currentState.sort((b, a) => a.rating.localeCompare(b.rating))
+      );
+    };
     return (
       <div>
         <div>
@@ -89,8 +101,12 @@ class songOverview extends React.Component {
                 <th className="song-row__item">
                   <button onClick={sortByArtist}>Artist</button>
                 </th>
-                <th className="song-row__item">Genre</th>
-                <th className="song-row__item">Rating</th>
+                <th className="song-row__item">
+                  <button onClick={sortByGenre}>Genre</button>
+                </th>
+                <th className="song-row__item">
+                  <button onClick={sortByRating}>rating</button>
+                </th>
               </tr>
             </thead>
             <SongFormList songList={this.state.songs} />
